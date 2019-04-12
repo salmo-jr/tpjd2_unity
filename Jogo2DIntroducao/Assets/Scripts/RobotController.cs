@@ -28,20 +28,30 @@ public class RobotController : MonoBehaviour
     private void FixedUpdate()
     {
         noSolo = Physics2D.OverlapCircle(verificaSolo.position, raioSolo, eSolo);
+        anim.SetBool("Ground", noSolo);
+        anim.SetFloat("SpeedVert", rb2d.velocity.y);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // MOVIMENTACAO HORIZONTAL DO PLAYER
         h = Input.GetAxis("Horizontal");
 
-        rb2d.AddForce(new Vector2(h * velocidadeMaxima, rb2d.velocity.y));
+        rb2d.AddForce(new Vector2(h * forcaMovimento, rb2d.velocity.y));
         //rb2d.velocity = new Vector2(h * velocidadeMaxima, rb2d.velocity.y);
 
         anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
 
         if (h > 0 && !viradoDireita) Flip();
         else if (h < 0 && viradoDireita) Flip();
+
+        // PULO DO PLAYER
+        if (noSolo && Input.GetButtonDown("Jump"))
+        {
+            anim.SetBool("Ground", false);
+            rb2d.AddForce(new Vector2(0, forcaPulo));
+        }
     }
 
     private void Flip()

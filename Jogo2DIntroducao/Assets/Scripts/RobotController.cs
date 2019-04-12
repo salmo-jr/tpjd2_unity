@@ -8,7 +8,12 @@ public class RobotController : MonoBehaviour
 
     public float forcaMovimento = 365f;
     public float velocidadeMaxima = 5f;
+    public Transform verificaSolo;
+    public LayerMask eSolo;
+    public float forcaPulo = 700f;
 
+    private float raioSolo = 0.2f;
+    private bool noSolo = false;
     private float h;
     private Animator anim;
     private Rigidbody2D rb2d;
@@ -18,6 +23,11 @@ public class RobotController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        noSolo = Physics2D.OverlapCircle(verificaSolo.position, raioSolo, eSolo);
     }
 
     // Update is called once per frame

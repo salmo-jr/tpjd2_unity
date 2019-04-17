@@ -1,0 +1,8 @@
+HINGE JOINT
+https://unity3d.com/learn/tutorials/topics/2d-game-creation/hinge-joint-2d?playlist=17093
+
+AREA EFFECTOR
+https://unity3d.com/learn/tutorials/topics/2d-game-creation/area-effector-2d?playlist=17093
+
+POINT EFFECTOR
+https://unity3d.com/learn/tutorials/topics/2d-game-creation/point-effector-2d?playlist=17093
